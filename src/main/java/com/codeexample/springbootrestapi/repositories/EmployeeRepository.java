@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 Methods such as deleteAll, CreateNew, deletebyId etc. So we don't need to define these implementations again. */
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Integer> {
 
+
 }

@@ -1,69 +1,56 @@
 package com.codeexample.springbootrestapi.dto;
 
-import jakarta.persistence.Column;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 public class EmployeeDTO {
 
-    private String employeeName;
-
-    private int employeeId;
-
+    private Long id;
+    private String name;
     private String email;
+    private Integer age;
+    private LocalDate dateOfJoining;
+    private Boolean isActive;
 
-    private int age;
-
-    @Column(name = "date_of_joining")
-    private LocalDate dateofJoining;
-
-    private boolean isActive;
-
-    public String getEmployeeName() {
-        return employeeName;
+    public Long getId() {
+        return id;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getName() {
+        return name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public LocalDate getDateofJoining() {
-        return dateofJoining;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setAge(int age) {
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public void setDateofJoining(LocalDate dateofJoining) {
-        this.dateofJoining = dateofJoining;
+    public LocalDate getDateOfJoining() {
+        return dateOfJoining;
     }
 
-    public void setActive(boolean active) {
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
         isActive = active;
     }
 }
