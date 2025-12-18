@@ -1,66 +1,73 @@
-package com.codeexample.springbootrestapi.dto;
+package com.codeexample.springbootrestapi.entities;
 
-import jakarta.persistence.Column;
+
+import jakarta.persistence.*;
+
+
 
 import java.time.LocalDate;
 
-public class EmployeeDTO {
+@Entity
+
+@Table(name = "employees")
+public class EmployeeEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int employeeId;
 
     private String employeeName;
-
-    private int employeeId;
 
     private String email;
 
     private int age;
 
-    @Column(name = "date_of_joining")
     private LocalDate dateofJoining;
 
     private boolean isActive;
 
-    public String getEmployeeName() {
-        return employeeName;
-    }
-
     public int getEmployeeId() {
         return employeeId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public LocalDate getDateofJoining() {
-        return dateofJoining;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
     }
 
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
+    public LocalDate getDateofJoining() {
+        return dateofJoining;
+    }
+
     public void setDateofJoining(LocalDate dateofJoining) {
         this.dateofJoining = dateofJoining;
+    }
+
+    public boolean isActive() {
+        return isActive;
     }
 
     public void setActive(boolean active) {
