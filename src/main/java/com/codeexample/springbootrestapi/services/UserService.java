@@ -1,0 +1,25 @@
+package com.codeexample.springbootrestapi.services;
+
+import com.codeexample.springbootrestapi.entities.UserEntity;
+import com.codeexample.springbootrestapi.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class UserService implements UserDetailsService {
+
+    // Injecting UserRepository Bean
+    @Autowired
+    private UserRepository userRepository;
+
+    // Use the UserRepository to find the username using the method.
+    @Override
+    public UserEntity loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername().orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+    }
+}
