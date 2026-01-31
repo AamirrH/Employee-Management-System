@@ -22,7 +22,10 @@ public class WebSecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
         httpSecurity
-                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/allemployees").permitAll()
+                        // All employees is now permitted for all without authentication
+                        .anyRequest().authenticated())
                 // Through this method, Any Request that comes will get authenticated
                 .formLogin(Customizer.withDefaults());
                 //.formLogin(formLoginConfig -> formLoginConfig.loginPage("AddLoginPage")) Customised Login Page Redirection

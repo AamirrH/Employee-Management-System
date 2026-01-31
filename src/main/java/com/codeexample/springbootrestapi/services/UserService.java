@@ -16,12 +16,12 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
 
     // Injecting UserRepository Bean
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
 
     // Use the UserRepository to find the username using the method.
     @Override
     public UserEntity loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername().orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found"));
     }
 }
