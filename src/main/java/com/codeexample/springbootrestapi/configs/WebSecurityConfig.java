@@ -6,6 +6,8 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
@@ -23,14 +25,18 @@ public class WebSecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
         httpSecurity
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/allemployees").permitAll()
+                        .requestMatchers("/signup").permitAll()
                         // All employees is now permitted for all without authentication
-                        .anyRequest().authenticated())
+                        .anyRequest().authenticated());
                 // Through this method, Any Request that comes will get authenticated
-                .formLogin(Customizer.withDefaults());
+//                .formLogin(Customizer.withDefaults());
                 //.formLogin(formLoginConfig -> formLoginConfig.loginPage("AddLoginPage")) Customised Login Page Redirection
 
         return httpSecurity.build();
+    }
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

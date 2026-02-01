@@ -16,13 +16,16 @@ import java.util.Date;
 public class JWTService {
 
     @Value("${jwt.secretkey}")
+    // Injects Value from application.properties, thus improving code security
     private String secretKey;
 
+    // creates a hmacSha key using secretKey by converting it into bytes first
     private SecretKey getsecretKey(){
         return Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
 
+    // generates a token, by getting the header, payload { username,id,roles} etc
     public String generateToken(UserEntity userEntity){
         return Jwts.builder()
                 .subject(userEntity.getId().toString())
