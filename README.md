@@ -3,7 +3,7 @@
 # Employee Management System
 
 A **backend-only Employee Management System** built using **Spring Web MVC** and an **H2 embedded database**.
-This project focuses on **core Spring MVC concepts**, layered architecture, validation, exception handling, and clean API design — without using ORM frameworks.
+This project focuses on **core Spring MVC concepts**, layered architecture, validation, exception handling, and clean API design.
 
 ---
 
